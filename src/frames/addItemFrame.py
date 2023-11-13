@@ -1,10 +1,14 @@
 import tkinter as tk
 import sqlite3
 
+# Data imports
+from data.expense import Expense
+
 class AddItemFrame( tk.Frame ):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
-        
+        self.parent = parent
+
         dateLabel = tk.Label( self, text="Date" )
         self.dateInput = tk.Entry( self, width=30 )
         dateLabel.grid( row=0, column=0 )
@@ -29,29 +33,16 @@ class AddItemFrame( tk.Frame ):
         submitButton.grid( row=4, column=0 )
 
      # @Diyar: 2-add-input-validation
-    def isValidInput( self ):
+    def isValidInput( self, expense ):
         return True
     
     def submitToDatabase( self ):
-        if self.isValidInput():    
-            # Connect to the database
-            # @Diyar: 4-create-concise-variable-list
-            # @Diyar: 5-programmatically-create-db-when-needed: https://stackoverflow.com/questions/12932607/how-to-check-if-a-sqlite3-database-exists-in-python
-            conn = sqlite3.connect('expenseDatabase.db')
-            c = conn.cursor()
-
-            # Insert into table
-            # @Diyar: 4-create-concise-variable-list: in this case for expenses
-            c.execute("INSERT INTO expenses VALUES (:date, :category, :cost, :description)",
-                      {
-                          'date': self.dateInput.get(),
-                          'category': self.categoryInput.get(),
-                          'cost': self.costInput.get(),
-                          'description': self.descriptionInput.get()
-                      })
-
-            conn.commit()
-            conn.close()
+        expense = Expense( date=self.dateInput.get(), category=self.categoryInput.get(), cost=self.costInput.get(), description=self.descriptionInput.get() )
+        
+        if self.isValidInput( expense ):  
+              
+            # @Diyar: This is a confusing way to get access to siblings in my UI structure...
+            self.parent.parent.dataViewWidget.addExpenseToDatabase( expense )
 
             # Clear text boxes
             self.dateInput.delete( 0, tk.END )

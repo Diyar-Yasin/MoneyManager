@@ -18,17 +18,17 @@ class MainApplication( tk.Frame ):
             self.columnconfigure( i, weight=1 )
 
         # Setup frames of top row
-        pieGraphWidget = PieGraphFrame( self, bg="orange" )
-        timeGraphWidget = TimeGraphFrame( self, bg="blue" )
-        addItemAndToolbarWidget = AddItemAndToolbarFrame( self )
+        self.pieGraphWidget = PieGraphFrame( self, bg="orange" )
+        self.timeGraphWidget = TimeGraphFrame( self, bg="blue" )
+        self.addItemAndToolbarWidget = AddItemAndToolbarFrame( self )
 
-        pieGraphWidget.grid( row=0, column=0, sticky="nsew" )
-        addItemAndToolbarWidget.grid( row=0, column=1, sticky="nsew" )
-        timeGraphWidget.grid( row=0, column=2, sticky="nsew" )
+        self.pieGraphWidget.grid( row=0, column=0, sticky="nsew" )
+        self.addItemAndToolbarWidget.grid( row=0, column=1, sticky="nsew" )
+        self.timeGraphWidget.grid( row=0, column=2, sticky="nsew" )
 
         # Setup frame of bottom to span all 3 columns
-        dataViewWidget = DataViewFrame(self, bg="green")
-        dataViewWidget.grid( row=1, column=0, columnspan=3, sticky="nsew" )
+        self.dataViewWidget = DataViewFrame(self, bg="green")
+        self.dataViewWidget.grid( row=1, column=0, columnspan=3, sticky="nsew" )
 
     def __init__( self, parent, *args, **kwargs ):
         tk.Frame.__init__( self, parent, *args, **kwargs )
