@@ -35,22 +35,27 @@ class MainApplication( tk.Frame ):
         self.parent = parent
         
         # Setup window
+        # @Diyar: 4-create-concise-variable-list
         self.parent.title( 'Money Manager' )
-        self.parent.iconbitmap( '../images/appIcon.ico' )
-        
-        
+        self.parent.iconbitmap( '../images/appIcon.ico' ) 
 
         # Setup grid structure
         self.createGrid()
 
 
+def setupInitialPageGeometry( root ):
+    WINDOW_START_WIDTH_PX = 1600
+    WINDOW_START_HEIGHT_PX = 1000
+
+    width = WINDOW_START_WIDTH_PX
+    height = WINDOW_START_HEIGHT_PX
+    root.geometry(f"{width}x{height}")
+
+
 if __name__ == "__main__":
     root = tk.Tk()
 
-    # Setup initial page geometry
-    width = 1600
-    height = 1000
-    root.geometry(f"{width}x{height}")  
+    setupInitialPageGeometry( root )
 
     # Create MainApplication object and begin the runloop
     MainApplication(root).pack( side="top", fill="both", expand=True )
