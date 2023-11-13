@@ -102,9 +102,6 @@ Expense sheet to help track and visualize my spending habits
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 _Under construction_
 
 ### Prerequisites
@@ -189,8 +186,6 @@ Project Link: [https://github.com/Diyar-Yasin/MoneyManager](https://github.com/D
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
 * [Choose an Open Source License](https://choosealicense.com)
 * [Img Shields](https://shields.io)
