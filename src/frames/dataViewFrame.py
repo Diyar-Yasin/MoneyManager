@@ -96,7 +96,8 @@ class DataViewFrame( tk.Frame ):
 
             conn.commit()
 
-            label.destroy() # Remove the row from UI only if we successfully deleted from the database
+            # Remove the row from UI only if we successfully deleted from the database
+            label.destroy()
             button.destroy()
 
         except Exception as err:

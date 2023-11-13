@@ -27,7 +27,7 @@ class MainApplication( tk.Frame ):
         self.timeGraphWidget.grid( row=0, column=2, sticky="nsew" )
 
         # Setup frame of bottom to span all 3 columns
-        self.dataViewWidget = DataViewFrame(self, bg="green")
+        self.dataViewWidget = DataViewFrame( self )
         self.dataViewWidget.grid( row=1, column=0, columnspan=3, sticky="nsew" )
 
     def __init__( self, parent, *args, **kwargs ):
