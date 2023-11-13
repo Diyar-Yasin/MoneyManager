@@ -15,8 +15,8 @@ class AddItemAndToolbarFrame( tk.Frame ):
 
         self.columnconfigure( 0, weight=1 )
 
-        toolbarWidget = ToolbarFrame( self, bg="black" )
-        addItemWidget = AddItemFrame( self )
+        self.toolbarWidget = ToolbarFrame( self, bg="black" )
+        self.addItemWidget = AddItemFrame( self )
 
-        toolbarWidget.grid( row=0, column=0, sticky="nsew" )
-        addItemWidget.grid( row=1, column=0, sticky="nsew" )
+        self.toolbarWidget.grid( row=0, column=0, sticky="nsew" )
+        self.addItemWidget.grid( row=1, column=0, sticky="nsew" )
