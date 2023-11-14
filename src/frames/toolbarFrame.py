@@ -7,3 +7,9 @@ class ToolbarFrame( tk.Frame ):
         # Add your frame-specific logic here
         label = tk.Label(self, text="ToolbarFrame")
         label.pack()
+
+    def getCurrentYear( self ):
+        return "2023"
+    
+    def getCurrentMonth( self ):
+        return "11"

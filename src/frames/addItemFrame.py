@@ -1,5 +1,6 @@
 import tkinter as tk
 import datetime
+import calendar
 import re
 
 # Data imports
@@ -10,13 +11,13 @@ class AddItemFrame( tk.Frame ):
         super().__init__(parent, *args, **kwargs)
         self.parent = parent
 
-        dateLabel = tk.Label( self, text="Date" )
-        self.dateInput = tk.Entry( self, width=30, highlightbackground = "red", highlightcolor= "red" )
-        self.dateInput.bind( "<FocusIn>", self.handleAnyInputFocus )
-        self.dateInputErrorLabel = tk.Label( self, text="", foreground="red" )
-        dateLabel.grid( row=0, column=0 )
-        self.dateInput.grid( row=0, column=1 )
-        self.dateInputErrorLabel.grid( row=0, column=2 )
+        dayLabel = tk.Label( self, text="Day" )
+        self.dayInput = tk.Entry( self, width=30, highlightbackground = "red", highlightcolor= "red" )
+        self.dayInput.bind( "<FocusIn>", self.handleAnyInputFocus )
+        self.dayInputErrorLabel = tk.Label( self, text="", foreground="red" )
+        dayLabel.grid( row=0, column=0 )
+        self.dayInput.grid( row=0, column=1 )
+        self.dayInputErrorLabel.grid( row=0, column=2 )
 
         categoryLabel = tk.Label( self, text="Category" )
         self.categoryInput = tk.Entry( self, width=30, highlightbackground = "red", highlightcolor= "red" )
@@ -48,8 +49,8 @@ class AddItemFrame( tk.Frame ):
 
     # Reset all error messages
     def resetAllErrorMessages( self ):
-        self.dateInput.config( highlightthickness=0 )
-        self.dateInputErrorLabel.config( text="" )
+        self.dayInput.config( highlightthickness=0 )
+        self.dayInputErrorLabel.config( text="" )
 
         self.categoryInput.config( highlightthickness=0 )
         self.categoryInputErrorLabel.config( text="" )
@@ -62,9 +63,9 @@ class AddItemFrame( tk.Frame ):
 
     # Reset any error messages on focus of an Entry element
     def handleAnyInputFocus( self, event ):
-        if event.widget == self.dateInput:
-            self.dateInput.config( highlightthickness=0 )
-            self.dateInputErrorLabel.config( text="" )
+        if event.widget == self.dayInput:
+            self.dayInput.config( highlightthickness=0 )
+            self.dayInputErrorLabel.config( text="" )
 
         elif event.widget == self.categoryInput:
             self.categoryInput.config( highlightthickness=0 )
@@ -80,24 +81,27 @@ class AddItemFrame( tk.Frame ):
 
     
     def isValidInput( self, expense ):
-        ACCEPTED_DATE_FORMATS = [ '%Y-%m-%d', '%m/%d']
+        DATE_FORMAT = '%Y-%m-%d'
 
-        validDate = False
-        for DATE_FORMAT in ACCEPTED_DATE_FORMATS:
-            try:
-                datetime.datetime.strptime( expense.date, DATE_FORMAT ) # Throws if cannot validate the date
-                validDate = True
-                break                                                   # As long as one format is valid, we have a valid date
-            except ValueError:
-                continue
+        # The user picks the current year and month using the toolbar, they only set the day when adding an expense
+        currentYear = self.parent.toolbarWidget.getCurrentYear()
+        currentMonth = self.parent.toolbarWidget.getCurrentMonth()
+        date = currentYear + "-" + currentMonth + "-" + expense.day
+        validDate = True
+
+        try:
+            datetime.datetime.strptime( date, DATE_FORMAT ) # Throws if cannot validate the date
+        except ValueError:
+            validDate = False
         
         PRICE_FORMAT = r'\d+(?:\.\d{1,2})?'
 
         validInput = True
         
         if not validDate:
-            self.dateInput.config( highlightthickness=1 )
-            self.dateInputErrorLabel.config( text="Please input a valid date: YYYY-MM-DD or MM/DD" )
+            NUM_DAYS_IN_MONTH = calendar.monthrange( int( currentYear ), int( currentMonth ) )[1]
+            self.dayInput.config( highlightthickness=1 )
+            self.dayInputErrorLabel.config( text="Please input a valid day: 1-%s" % ( NUM_DAYS_IN_MONTH ) )
             validInput = False
 
         if expense.category == "":
@@ -118,7 +122,9 @@ class AddItemFrame( tk.Frame ):
         return validInput
     
     def submitToDatabase( self ):
-        expense = Expense( date=self.dateInput.get(), category=self.categoryInput.get(), cost=self.costInput.get(), description=self.descriptionInput.get() )
+        expense = Expense( day=self.dayInput.get(), month=self.parent.toolbarWidget.getCurrentMonth(),
+                          year=self.parent.toolbarWidget.getCurrentYear(), category=self.categoryInput.get(), 
+                          cost=self.costInput.get(), description=self.descriptionInput.get() )
         
         self.resetAllErrorMessages()
 
@@ -129,7 +135,7 @@ class AddItemFrame( tk.Frame ):
         self.parent.parent.dataViewWidget.addExpenseToDatabase( expense )
 
         # Clear text boxes
-        self.dateInput.delete( 0, tk.END )
+        self.dayInput.delete( 0, tk.END )
         self.categoryInput.delete( 0, tk.END )
         self.costInput.delete( 0, tk.END )
         self.descriptionInput.delete( 0, tk.END )
