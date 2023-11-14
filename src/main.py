@@ -1,4 +1,5 @@
 import tkinter as tk
+import sqlite3
 
 # Frame imports
 from frames.addItemAndToolbarFrame import AddItemAndToolbarFrame
@@ -51,11 +52,30 @@ def setupInitialPageGeometry( root ):
     height = WINDOW_START_HEIGHT_PX
     root.geometry(f"{width}x{height}")
 
+def setupDatabaseIfNecessary():
+    QUERY = "CREATE TABLE IF NOT EXISTS expenses ( date text, category text, cost real, description text )"
+
+    try:
+        conn = sqlite3.connect( 'expenseDatabase.db' )
+        c = conn.cursor()
+
+        c.execute( QUERY )
+        
+        conn.commit()
+
+    except Exception as err:
+        print( 'Query Failed: %s\nError: %s' % ( QUERY, str( err ) ) )
+
+    finally:
+        conn.close()
+
 
 if __name__ == "__main__":
     root = tk.Tk()
 
     setupInitialPageGeometry( root )
+
+    setupDatabaseIfNecessary()
 
     # Create MainApplication object and begin the runloop
     MainApplication(root).pack( side="top", fill="both", expand=True )

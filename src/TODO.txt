@@ -1,0 +1,10 @@
+4-create-concise-variable-list
+5-programmatically-create-db-when-needed: https://stackoverflow.com/questions/12932607/how-to-check-if-a-sqlite3-database-exists-in-python
+6-refactor-db-to-store-month-and-year
+7-add-update-entry-functionality https://www.youtube.com/watch?v=YXPyB4XeYLA
+8-display-db-entries-in-chronological-order
+9-have-db-only-grab-current-months-entries-to-display
+10-add-toolbar-that-switches-month-and-year-of-data
+11-make-frame-scrollable
+13-add-pie-graph
+14-add-time-graph
