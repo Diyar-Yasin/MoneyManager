@@ -94,7 +94,7 @@ class AddItemFrame( tk.Frame ):
         PRICE_FORMAT = r'\d+(?:\.\d{1,2})?'
 
         validInput = True
-
+        
         if not validDate:
             self.dateInput.config( highlightthickness=1 )
             self.dateInputErrorLabel.config( text="Please input a valid date: YYYY-MM-DD or MM/DD" )

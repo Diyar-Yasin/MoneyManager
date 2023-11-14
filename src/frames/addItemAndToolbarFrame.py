@@ -4,6 +4,7 @@ import tkinter as tk
 from frames.addItemFrame import AddItemFrame
 from frames.toolbarFrame import ToolbarFrame
 
+# @Diyar: 10-add-toolbar-that-switches-month-and-year-of-data
 class AddItemAndToolbarFrame( tk.Frame ):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
