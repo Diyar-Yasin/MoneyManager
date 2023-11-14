@@ -9,6 +9,10 @@ class DataViewFrame( tk.Frame ):
         self.parent = parent
         self.getLatestData()
 
+    def reloadData( self ):
+        self.clearDataView()
+        self.getLatestData()
+
     def clearDataView( self ):
         for widget in self.winfo_children():
             widget.destroy()
@@ -86,8 +90,7 @@ class DataViewFrame( tk.Frame ):
             conn.close()
 
         # While constantly clearing and recreating the view is an expensive operation, realistically it does not affect UX so until it does this simple solution is great!
-        self.clearDataView()
-        self.getLatestData()
+        self.reloadData()
     
 
     def deleteExpenseFromDatabase( self, label, button, oid ):
