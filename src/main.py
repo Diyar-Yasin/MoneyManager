@@ -53,7 +53,7 @@ def setupInitialPageGeometry( root ):
     root.geometry(f"{width}x{height}")
 
 def setupDatabaseIfNecessary():
-    QUERY = "CREATE TABLE IF NOT EXISTS expenses ( date text, category text, cost real, description text )"
+    QUERY = "CREATE TABLE IF NOT EXISTS expenses ( day integer, month integer, year integer, category text, cost real, description text )"
 
     try:
         conn = sqlite3.connect( 'expenseDatabase.db' )
