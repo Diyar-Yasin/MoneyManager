@@ -31,8 +31,8 @@ class MainApplication( tk.Frame ):
         self.dataViewWidget.grid( row=1, column=0, columnspan=3, sticky="nsew" )
 
         # These top frame rows rely on dataViewWidget and must be initialized last
-        self.pieGraphWidget = PieGraphFrame( self, bg=getBackgroundColor() )
-        self.timeGraphWidget = TimeGraphFrame( self, bg="blue" )
+        self.pieGraphWidget = PieGraphFrame( self )
+        self.timeGraphWidget = TimeGraphFrame( self )
 
         self.pieGraphWidget.grid( row=0, column=0, sticky="nsew" )
         self.timeGraphWidget.grid( row=0, column=2, sticky="nsew" )
@@ -55,10 +55,13 @@ class MainApplication( tk.Frame ):
 def setupInitialPageGeometry( root ):
     WINDOW_START_WIDTH_PX = 1600
     WINDOW_START_HEIGHT_PX = 1000
+    WINDOW_MIN_WIDTH_PX = 1400
+    WINDOW_MIN_HEIGHT_PX = 800
 
     width = WINDOW_START_WIDTH_PX
     height = WINDOW_START_HEIGHT_PX
     root.geometry(f"{width}x{height}")
+    root.minsize(WINDOW_MIN_WIDTH_PX, WINDOW_MIN_HEIGHT_PX)
 
 def setupDatabaseIfNecessary():
     QUERY = "CREATE TABLE IF NOT EXISTS expenses ( day integer, month integer, year integer, category text, cost real, description text )"

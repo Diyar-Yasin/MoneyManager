@@ -23,9 +23,8 @@ class PieGraphFrame( tk.Frame ):
 
     def reloadData( self ):
         self.clearDataView()
-        # the figure that will contain the plot
         
-
+        # the figure that will contain the plot
         fig = Figure( figsize=(2, 2), facecolor=getBackgroundColor() ) 
 
         # Grab data from dataViewFrame

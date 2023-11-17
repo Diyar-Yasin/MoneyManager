@@ -56,6 +56,7 @@ class ToolbarFrame( tk.Frame ):
     def onNewDateSelected( self, event=None ):
         self.parent.parent.dataViewWidget.reloadData()
         self.parent.parent.pieGraphWidget.reloadData()
+        self.parent.parent.timeGraphWidget.reloadData()
     
     def getCurrentYear( self ):
         return self.yearSelector.get()

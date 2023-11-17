@@ -97,6 +97,7 @@ class DataViewFrame( tk.Frame ):
         # While constantly clearing and recreating the view is an expensive operation, realistically it does not affect UX so until it does this simple solution is great!
         self.reloadData()
         self.parent.pieGraphWidget.reloadData()
+        self.parent.timeGraphWidget.reloadData()
     
 
     def deleteExpenseFromDatabase( self, label, button, oid ):
