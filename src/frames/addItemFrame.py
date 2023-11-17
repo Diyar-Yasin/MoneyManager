@@ -86,7 +86,7 @@ class AddItemFrame( tk.Frame ):
         # The user picks the current year and month using the toolbar, they only set the day when adding an expense
         currentYear = self.parent.toolbarWidget.getCurrentYear()
         currentMonth = self.parent.toolbarWidget.getCurrentMonth()
-        date = currentYear + "-" + currentMonth + "-" + expense.day
+        date = str( currentYear ) + "-" + str( currentMonth ) + "-" + expense.day
         validDate = True
 
         try:
