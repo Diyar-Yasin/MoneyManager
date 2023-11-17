@@ -6,12 +6,13 @@ from data.dataLabel import DataLabel
 class DataViewFrame( tk.Frame ):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
+        BACKDROP_COLOR = "#11001c"
         self.parent = parent
-        self.getLatestData()
+        self.updateDataViewFrameData()
 
     def reloadData( self ):
         self.clearDataView()
-        self.getLatestData()
+        self.updateDataViewFrameData()
 
     def clearDataView( self ):
         for widget in self.winfo_children():
@@ -49,6 +50,10 @@ class DataViewFrame( tk.Frame ):
         finally:
             conn.close()
 
+        return data
+    
+    def updateDataViewFrameData( self ):
+        data = self.getLatestData()
         # oid may not necessarily be ordered correctly, need dataItemCounter to place elements
         dataItemCounter = 0
 
@@ -91,6 +96,7 @@ class DataViewFrame( tk.Frame ):
 
         # While constantly clearing and recreating the view is an expensive operation, realistically it does not affect UX so until it does this simple solution is great!
         self.reloadData()
+        self.parent.pieGraphWidget.reloadData()
     
 
     def deleteExpenseFromDatabase( self, label, button, oid ):

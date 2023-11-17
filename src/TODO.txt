@@ -1,6 +1,6 @@
 4-create-concise-variable-list
 7-add-update-entry-functionality https://www.youtube.com/watch?v=YXPyB4XeYLA
-10-add-toolbar-that-switches-month-and-year-of-data
 11-make-frame-scrollable
-13-add-pie-graph
 14-add-time-graph
+15-make-category-a-dropdown-and-have-addable-categories
+16-style-text-fields
