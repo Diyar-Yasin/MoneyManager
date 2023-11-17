@@ -1,6 +1,9 @@
 4-create-concise-variable-list
 7-add-update-entry-functionality https://www.youtube.com/watch?v=YXPyB4XeYLA
-11-make-frame-scrollable
-14-add-time-graph
 15-make-category-a-dropdown-and-have-addable-categories
-16-style-text-fields
+BUG-17-scrollbar-wont-work-until-window-is-resized
+18-make-entire-frame-scrollable-not-just-scrollbar
+19-style-input-and-buttons
+20-style-time-graph
+21-add-budget-input
+22-add-red-dotted-budget-line-to-time-graph

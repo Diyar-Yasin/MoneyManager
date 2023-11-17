@@ -18,9 +18,9 @@ class MainApplication( tk.Frame ):
         self.rowconfigure( 1, weight=2 )
 
         # Have the top row contain 3 columns while the bottom row spans all 3 columns
-        TOP_COLS = 3
-        for i in range( TOP_COLS ):
-            self.columnconfigure( i, weight=1 )
+        self.columnconfigure( 0, weight=3 )
+        self.columnconfigure( 1, weight=1 )
+        self.columnconfigure( 2, weight=3 )
 
         # Setup frames of top row
         self.addItemAndToolbarWidget = AddItemAndToolbarFrame( self, bg=getBackgroundColor() )
@@ -36,7 +36,6 @@ class MainApplication( tk.Frame ):
 
         self.pieGraphWidget.grid( row=0, column=0, sticky="nsew" )
         self.timeGraphWidget.grid( row=0, column=2, sticky="nsew" )
-
 
 
     def __init__( self, parent, *args, **kwargs ):

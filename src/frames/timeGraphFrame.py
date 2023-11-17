@@ -38,7 +38,7 @@ class TimeGraphFrame( tk.Frame ):
         currentYear = self.parent.addItemAndToolbarWidget.toolbarWidget.getCurrentYear()
         currentMonth = self.parent.addItemAndToolbarWidget.toolbarWidget.getCurrentMonth()
 
-        x = range( 1, self.getNumberOfDaysInMonth( int( currentYear ), int( currentMonth ) ) )
+        x = range( 0, self.getNumberOfDaysInMonth( int( currentYear ), int( currentMonth ) + 1 ) )
         y = [0] * len(x)
 
         for item in data.items():

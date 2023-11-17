@@ -2,12 +2,15 @@ import tkinter as tk
 from tkinter import ttk
 from datetime import datetime
 
+# Styles
+from styles.colors import getBackgroundColor, getForegroundColor
+
 class ToolbarFrame( tk.Frame ):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.parent = parent
         
-        self.selectedDateLabel = tk.Label( self, text="Expenses For" )
+        self.selectedDateLabel = tk.Label( self, text="Expenses For", font="TkFixedFont", bg=getBackgroundColor(), fg=getForegroundColor(), width=12, anchor="w" )
         self.selectedDateLabel.grid( column = 0, row = 15, padx = 10, pady = 25 ) 
 
         MONTHS = [' January',  
