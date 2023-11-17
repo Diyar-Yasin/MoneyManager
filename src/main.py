@@ -7,9 +7,11 @@ from frames.pieGraphFrame import PieGraphFrame
 from frames.timeGraphFrame import TimeGraphFrame
 from frames.dataViewFrame import DataViewFrame
 
+# Styles
+from styles.colors import getBackgroundColor
+
 class MainApplication( tk.Frame ):
     def createGrid( self ):
-        BACKDROP_COLOR = "#11001c"
 
         # Create top and bottom rows with equal weight
         self.rowconfigure( 0, weight=3 )
@@ -21,15 +23,15 @@ class MainApplication( tk.Frame ):
             self.columnconfigure( i, weight=1 )
 
         # Setup frames of top row
-        self.addItemAndToolbarWidget = AddItemAndToolbarFrame( self, bg=BACKDROP_COLOR )
+        self.addItemAndToolbarWidget = AddItemAndToolbarFrame( self, bg=getBackgroundColor() )
         self.addItemAndToolbarWidget.grid( row=0, column=1, sticky="nsew" )
 
         # Setup frame of bottom to span all 3 columns
-        self.dataViewWidget = DataViewFrame( self, bg=BACKDROP_COLOR )
+        self.dataViewWidget = DataViewFrame( self, bg=getBackgroundColor() )
         self.dataViewWidget.grid( row=1, column=0, columnspan=3, sticky="nsew" )
 
         # These top frame rows rely on dataViewWidget and must be initialized last
-        self.pieGraphWidget = PieGraphFrame( self, bg=BACKDROP_COLOR )
+        self.pieGraphWidget = PieGraphFrame( self, bg=getBackgroundColor() )
         self.timeGraphWidget = TimeGraphFrame( self, bg="blue" )
 
         self.pieGraphWidget.grid( row=0, column=0, sticky="nsew" )

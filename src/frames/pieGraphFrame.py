@@ -1,8 +1,15 @@
 import tkinter as tk
+
+# Math
 import numpy as np
 from matplotlib.figure import Figure 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg 
+
+# Data
 from data.expense import Expense
+
+# Styles
+from styles.colors import getBackgroundColor
 
 class PieGraphFrame( tk.Frame ):
     def __init__(self, parent, *args, **kwargs):
@@ -17,9 +24,9 @@ class PieGraphFrame( tk.Frame ):
     def reloadData( self ):
         self.clearDataView()
         # the figure that will contain the plot
-        BACKDROP_COLOR = "#11001c"
+        
 
-        fig = Figure( figsize=(2, 2), facecolor=BACKDROP_COLOR ) 
+        fig = Figure( figsize=(2, 2), facecolor=getBackgroundColor() ) 
 
         # Grab data from dataViewFrame
         data = self.parent.dataViewWidget.getLatestData()
