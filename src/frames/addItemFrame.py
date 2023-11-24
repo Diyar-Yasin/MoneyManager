@@ -15,38 +15,38 @@ class AddItemFrame( tk.Frame ):
         self.parent = parent
 
         dayLabel = tk.Label( self, text="Day", font="TkFixedFont", bg=getBackgroundColor(), fg=getForegroundColor(), width=20, anchor="w" )
-        self.dayInput = tk.Entry( self, width=30, highlightbackground = "red", highlightcolor= "red" )
+        self.dayInput = tk.Entry( self, width=30, highlightbackground = "red", bg=getBackgroundColor(), fg=getForegroundColor(), highlightcolor= "red", font="TkFixedFont" )
         self.dayInput.bind( "<FocusIn>", self.handleAnyInputFocus )
-        self.dayInputErrorLabel = tk.Label( self, text="", foreground="red" )
+        self.dayInputErrorLabel = tk.Label( self, text="", font="TkFixedFont", foreground="red", bg=getBackgroundColor() )
         dayLabel.grid( row=0, column=0 )
         self.dayInput.grid( row=0, column=1 )
         self.dayInputErrorLabel.grid( row=0, column=2 )
 
         categoryLabel = tk.Label( self, text="Category", font="TkFixedFont", bg=getBackgroundColor(), fg=getForegroundColor(), width=20, anchor="w" )
-        self.categoryInput = tk.Entry( self, width=30, highlightbackground = "red", highlightcolor= "red" )
+        self.categoryInput = tk.Entry( self, width=30, highlightbackground = "red", bg=getBackgroundColor(), fg=getForegroundColor(), highlightcolor= "red", font="TkFixedFont" )
         self.categoryInput.bind( "<FocusIn>", self.handleAnyInputFocus )
-        self.categoryInputErrorLabel = tk.Label( self, text="", foreground="red" )
+        self.categoryInputErrorLabel = tk.Label( self, text="", font="TkFixedFont", foreground="red", bg=getBackgroundColor() )
         categoryLabel.grid( row=1, column=0 )
         self.categoryInput.grid( row=1, column=1 )
         self.categoryInputErrorLabel.grid( row=1, column=2 )
 
         costLabel = tk.Label( self, text="Cost", font="TkFixedFont", bg=getBackgroundColor(), fg=getForegroundColor(), width=20, anchor="w" )
-        self.costInput = tk.Entry( self, width=30, highlightbackground = "red", highlightcolor= "red" )
+        self.costInput = tk.Entry( self, width=30, highlightbackground = "red", bg=getBackgroundColor(), fg=getForegroundColor(), highlightcolor= "red", font="TkFixedFont" )
         self.costInput.bind( "<FocusIn>", self.handleAnyInputFocus )
-        self.costInputErrorLabel = tk.Label( self, text="", foreground="red" )
+        self.costInputErrorLabel = tk.Label( self, text="", font="TkFixedFont", foreground="red", bg=getBackgroundColor() )
         costLabel.grid( row=2, column=0 )
         self.costInput.grid( row=2, column=1 )
         self.costInputErrorLabel.grid( row=2, column=2 )
 
         descriptionLabel = tk.Label( self, text="Description", font="TkFixedFont", bg=getBackgroundColor(), fg=getForegroundColor(), width=20, anchor="w" )
-        self.descriptionInput = tk.Entry( self, width=30, highlightbackground = "red", highlightcolor= "red" )
+        self.descriptionInput = tk.Entry( self, width=30, highlightbackground = "red", bg=getBackgroundColor(), fg=getForegroundColor(), highlightcolor= "red", font="TkFixedFont" )
         self.descriptionInput.bind( "<FocusIn>", self.handleAnyInputFocus )
-        self.descriptionInputErrorLabel = tk.Label( self, text="", foreground="red" )
+        self.descriptionInputErrorLabel = tk.Label( self, text="", font="TkFixedFont", foreground="red", bg=getBackgroundColor() )
         descriptionLabel.grid( row=3, column=0 )
         self.descriptionInput.grid( row=3, column=1 )
         self.descriptionInputErrorLabel.grid( row=3, column=2 )
 
-        self.submitButton = tk.Button( self, text="Enter item", command=self.submitToDatabase )
+        self.submitButton = tk.Button( self, text="Enter item", command=self.submitToDatabase, width=20, font="TkFixedFont", bg=getBackgroundColor(), fg=getForegroundColor() )
         self.submitButton.grid( row=4, column=0 )
         
 

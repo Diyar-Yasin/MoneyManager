@@ -25,7 +25,7 @@ class ToolbarFrame( tk.Frame ):
                     ' October',  
                     ' November',  
                     ' December']
-                
+
         self.monthSelector = ttk.Combobox( self, width = 27, values=MONTHS, state="readonly" )
         self.monthSelector.grid( row = 15, column = 1 ) 
 
@@ -34,7 +34,7 @@ class ToolbarFrame( tk.Frame ):
         DEFAULT_MONTH = MONTHS[ datetime.now().month - 1 ]
         self.monthSelector.set( DEFAULT_MONTH )
 
-        self.yearSelector = tk.Entry( self, width=30 )
+        self.yearSelector = tk.Entry( self, width=30, bg=getBackgroundColor(), fg=getForegroundColor() )
         self.yearSelector.insert(0, str( datetime.now().year ) )
         self.yearSelector.bind( "<FocusOut>", self.onYearSet )
         self.yearSelector.bind( "<Return>", self.onYearSet )

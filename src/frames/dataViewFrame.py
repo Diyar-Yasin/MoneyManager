@@ -7,7 +7,7 @@ from data.expense import Expense
 from data.dataLabel import DataLabel
 
 # Styles
-from styles.colors import getBackgroundColor
+from styles.colors import getBackgroundColor, getForegroundColor
 
 
 class DataViewFrame( tk.Frame ):
@@ -96,7 +96,7 @@ class DataViewFrame( tk.Frame ):
             dataLabel = DataLabel( innerFrame, expense )
             dataLabel.grid( row=dataItemCounter, column=0, sticky="w" )
 
-            dataLabelDeleteButton = tk.Button( innerFrame, text="Delete Expense" )
+            dataLabelDeleteButton = tk.Button( innerFrame, text="Delete Expense", width=20, font="TkFixedFont", bg=getBackgroundColor(), fg=getForegroundColor() )
             dataLabelDeleteButton.grid( row=dataItemCounter, column=1, sticky="e", pady=5 )
             dataLabelDeleteButton.config( command=lambda label=dataLabel, button=dataLabelDeleteButton, oid=oid: self.deleteExpenseFromDatabase( label, button, oid ) )
 

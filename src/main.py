@@ -54,13 +54,11 @@ class MainApplication( tk.Frame ):
 def setupInitialPageGeometry( root ):
     WINDOW_START_WIDTH_PX = 1600
     WINDOW_START_HEIGHT_PX = 1000
-    WINDOW_MIN_WIDTH_PX = 1400
-    WINDOW_MIN_HEIGHT_PX = 800
 
     width = WINDOW_START_WIDTH_PX
     height = WINDOW_START_HEIGHT_PX
     root.geometry(f"{width}x{height}")
-    root.minsize(WINDOW_MIN_WIDTH_PX, WINDOW_MIN_HEIGHT_PX)
+    root.resizable(width=False, height=False)
 
 def setupDatabaseIfNecessary():
     QUERY = "CREATE TABLE IF NOT EXISTS expenses ( day integer, month integer, year integer, category text, cost real, description text )"
